@@ -53,4 +53,4 @@ elif experiencia_heroi >= 9001 and experiencia_heroi <= 10000:
 else:
     nivel = "Radiante"
 
-print(f"O herói de nome {nome_do_heroi} está no nível {nivel}")
+print(f"O herói de nome {nome_do_heroi} está no nível {nivel}\n")
