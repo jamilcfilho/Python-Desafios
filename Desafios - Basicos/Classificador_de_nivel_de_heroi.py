@@ -29,41 +29,28 @@
 nome_do_heroi = input("Digite um nome para seu herói: ")
 experiencia_heroi = int(input("\nDigite o total de experiência do seu herói: "))
 
+if experiencia_heroi > 0 and experiencia_heroi < 1000:
+    nivel = "Ferro"
+        
+elif experiencia_heroi >= 1000 and experiencia_heroi <= 2000:
+    nivel = "Bronze"
+        
+elif experiencia_heroi >= 2001 and experiencia_heroi <= 5000:
+    nivel = "Prata"
+        
+elif experiencia_heroi >= 5001 and experiencia_heroi <= 7000:
+    nivel = "Ouro"
+        
+elif experiencia_heroi >= 7001 and experiencia_heroi <= 8000:
+    nivel = "Platina"
+      
+elif experiencia_heroi >= 8001 and experiencia_heroi <= 9000:
+    nivel = "Ascendente"
+        
+elif experiencia_heroi >= 9001 and experiencia_heroi <= 10000:
+    nivel = "Imortal"
+        
+else:
+    nivel = "Radiante"
 
-while True:
-
-    if experiencia_heroi > 0 and experiencia_heroi < 1000:
-        print(f"O Herói de nome {nome_do_heroi} está no nível de Ferro")
-        break
-
-    elif experiencia_heroi >= 1000 and experiencia_heroi <= 2000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Bronze")
-        break
-
-    elif experiencia_heroi >= 2001 and experiencia_heroi <= 5000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Prata")
-        break
-
-    elif experiencia_heroi >= 5001 and experiencia_heroi <= 7000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Ouro")
-        break
-
-    elif experiencia_heroi >= 7001 and experiencia_heroi <= 8000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Platina")
-        break
-
-    elif experiencia_heroi >= 8001 and experiencia_heroi <= 9000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Ascendente")
-        break
-
-    elif experiencia_heroi >= 9001 and experiencia_heroi <= 10000:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Imortal")
-        break
-
-    elif experiencia_heroi >= 10001:
-        print(f"O herói de nome {nome_do_heroi} está no nível de Radiante")
-        break
-
-    else:
-        print("Experiência inválida, recomece de novo")
-        break
+print(f"O herói de nome {nome_do_heroi} está no nível {nivel}")
