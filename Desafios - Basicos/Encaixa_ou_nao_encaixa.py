@@ -11,34 +11,24 @@
 
 # SAÍDA
 # Para cada caso de entrada imprima uma mensagem indicando se o segundo valor encaixa no 
-# primeiro valor, confome exemplo abaixo.
+# primeiro valor.
 
-# NÃO UTILIZAR PARA PODER ENTENDER E FAZER UM CÓDIGO MELHOR AINDA
+def verifica_encaixe(a, b): #Função -> verifica_encaixe
+    if len(b) > len(a):
+        return "nao encaixa"
+    elif a.endswith(b):
+        return "encaixa"
+    else:
+        return "nao encaixa"
 
-qt = int(input())
+# Quantidade de casos de teste que deverá ocorrer
+N = int(input("Digite a quantidade de casos de teste: "))
 
-v = []
+# Itera sobre cada caso de teste
+for i in range(N):
+    a = input("Digite o valor de A: ")
+    b = input("Digite o valor de B: ")
 
-
-
-for i in range(qt):
-
-  v = input().split(" ")
-
-  a = v[0]
-
-  b = v[1]
-
-
-
-  if len(b) > len(a):
-
-    print("nao encaixa")
-
-  elif a.endswith(b):
-
-    print("encaixa")
-
-  else:
-
-    print("nao encaixa")  
+    # Chama a função e imprime o resultado
+    resultado = verifica_encaixe(a, b)
+    print(resultado)
