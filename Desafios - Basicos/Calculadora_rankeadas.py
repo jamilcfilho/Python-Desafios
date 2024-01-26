@@ -25,7 +25,7 @@
 ## Saída
 
 # Ao final deve se exibir uma mensagem:
-# "O Herói tem de saldo de **{saldoVitorias}** está no nível de **{nivel}**"
+# "O Herói tem de saldo de **{saldo_vitorias}** está no nível de **{nivel}**"
 
 vitorias = int(input("\nDigite a quantidade de vitórias: "))
 derrotas = int(input("\nDigite a quantidade de derrotas: "))
