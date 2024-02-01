@@ -46,7 +46,7 @@ class Heroi:
             if self.ataque == 0:
                 SystemExit
             else:
-                print(f"O {nome} com {idade} anos, é um {tipo.lower()} que atacou usando {ataque}")
+                print(f"O {self.nome} com {self.idade} anos, é um {self.tipo.lower()} que atacou usando {self.ataque}")
 
 
 
