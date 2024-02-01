@@ -33,25 +33,26 @@
 # ex:"o guerreiro atacou usando espada"
 
 
-
-class heroi:
+# Criando a classe que recebe o nome de Heroi (boas práticas utilizar CamelCase)
+class Heroi:
     def __init__(self, nome, idade, tipo, ataque):
         self.nome = nome
         self.idade = idade
         self.tipo = tipo
         self.ataque = ataque
 
+# Definindo uma função "atacar" dentro da classe "Heroi"
     def atacar(self):
-            if ataque == 0:
+            if self.ataque == 0:
                 SystemExit
             else:
-                print(f"O {nome} com {idade} anos, é um {tipo} que atacou usando {ataque}")
+                print(f"O {nome} com {idade} anos, é um {tipo.lower()} que atacou usando {ataque}")
 
 
 
 
 nome = input("Defina o nome do seu herói: ")
-idade = input("Defina a idade do seu herói: ")
+idade = int(input("Defina a idade do seu herói: "))
 tipo = input("Escolha e digite a respectiva classe entre: Guerreiro, Mago, Monge e Ninja:\n")
 
 if tipo == "Guerreiro":
@@ -71,7 +72,8 @@ else:
     print("Respeite os caracteres maiúsculo e minúsculo e digite a classe novamente!!!")
     
 
+# Definindo um objeto "acao"
+acao = Heroi(nome, idade, tipo, ataque)
 
-acao = heroi(nome, idade, tipo, ataque)
-
+# Executando o objeto
 acao.atacar()
