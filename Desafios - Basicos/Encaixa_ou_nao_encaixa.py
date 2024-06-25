@@ -1,4 +1,4 @@
-#             DESAFIO BÁSICO 3/3 - PYTHON DEVELOPER
+#             DESAFIO BÁSICO - PYTHON DEVELOPER
 
 # Paulinho tem em suas mãos um novo problema.
 # Agora a sua professora lhe pediu que construísse um programa para verificar,
