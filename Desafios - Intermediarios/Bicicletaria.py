@@ -1,4 +1,8 @@
+#           Desafio Intermediário
 
+# João tem uma bicicletaria e gostaria de registrar suas bicicletas.
+# Crie um prgrama através da Programação Orientada a Objetos onde João informa: cor, modelo, ano e valor da bicicleta (atributos).
+# Uma bicicleta pode: buzinar, parar e correr. Adicione esses comportamentos (métodos).
 
 class Bicicleta:
     def __init__(self, cor, modelo, ano, valor):
