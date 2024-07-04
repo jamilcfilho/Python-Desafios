@@ -362,7 +362,7 @@ def main():
 
         else:
             print(
-                "\n-- Operação inválida! Por favor selecione novamente o número da operação desejada. --")
+                "\n-- Operação inválida! Por favor selecione novamente o número da operação desejada! --")
 
 
 main()
