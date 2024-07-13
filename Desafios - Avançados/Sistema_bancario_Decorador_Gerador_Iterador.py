@@ -1,24 +1,59 @@
 #           Desafio Avançado
 
 #       OBJETIVO GERAL
-#   Iniciar a modelagem do sistema bancário em Programação Orientada a Objetos.
-#   Adicionar classes para cliente e as operações bancárias: depósito e saque.
+#   Com os novos conhecimentos adquiridos sobre decoradores, geradores e iteradores, você foi encarregado
+# de implementar as seguintes funcionalidades no sistema:
+#   - Decorador de log
+#   - Gerador de relatórios
+#   - Iterador personalizado
 
 #       DESAFIO
-#   Implementar um sistema bancário em POO, que armazene os dados dos clientes
-# e contas bancárias em objetos ao invés de dicionários.
-#   O código deve seguir o modelo de classes UML disponível.
-#   Após concluir a modelagem das classes e a criação dos métodos, atualize os métodos que tratam das opções
-# de um menu para funcionarem com as classes modeladas.
+#   - Decorador de log
+# Implemente um decorador que seja aplicado a todas as funções de transações (depósito, saque, criação de
+# conta, etc). Esse decorador deve registrar (printar) a data e hora de cada transação, bem como o tipo de
+# transação.
+
+#   - Gerador de relatórios
+#   Crie um gerador que permita iterar sobre as transações de uma conta e retorne, uma a uma, as transações
+# que foram realizadas. Esse gerador deve também ter uma forma de filtrar as transações baseado em seu tipo
+# (por exemplo, apenas saques ou apenas depósitos).
+
+#   - Iterador personalizado
+#   Implemente um iterador personalizado ContaIterador que permita iterar sobre todas as contas do banco,
+# retornando informações básicas de cada conta (número, saldo atual, etc).
 
 from abc import ABC, abstractclassmethod, abstractproperty
 from datetime import datetime
+
+
+class ContasIterador:
+    def __init__(self, contas):
+        self.contas = contas
+        self.index = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        try:
+            conta = self.contas[self.index]
+            return f"""\
+            Agência:\t{conta.agencia}
+            Número:\t{conta.numero}
+            Titular:\t{conta.cliente.nome}
+            Saldo:\tR$ {conta.saldo:.2f}
+        """
+        except IndexError:
+            raise StopIteration
+        finally:
+            self.index += 1
 
 
 class Cliente:
     def __init__(self, endereco):
         self.endereco = endereco
         self.contas = []
+        self.indice_conta = 0
 
     def realizar_transacao(self, conta, transacao):
         transacao.registrar(conta)
@@ -150,6 +185,11 @@ class Historico:
             }
         )
 
+    def gerar_relatorio(self, tipo_transacao=None):
+        for transacao in self._transacoes:
+            if tipo_transacao is None or transacao["tipo"].lower() == tipo_transacao.lower():
+                yield transacao
+
 
 class Transacao(ABC):
     @property
@@ -192,6 +232,15 @@ class Deposito(Transacao):
             conta.historico.adicionar_transacao(self)
 
 
+def log_transacao(func):
+    def envelope(*args, **kwargs):
+        resultado = func(*args, **kwargs)
+        print(f"{datetime.now()}: {func.__name__.upper()}")
+        return resultado
+
+    return envelope
+
+
 def menu():
 
     menu = """\n
@@ -225,6 +274,7 @@ def recuperar_conta_cliente(cliente):
     return cliente.contas[0]
 
 
+@log_transacao
 def depositar(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -243,6 +293,7 @@ def depositar(clientes):
     cliente.realizar_transacao(conta, transacao)
 
 
+@log_transacao
 def sacar(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -261,6 +312,7 @@ def sacar(clientes):
     cliente.realizar_transacao(conta, transacao)
 
 
+@log_transacao
 def exibir_extrato(clientes):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -274,15 +326,14 @@ def exibir_extrato(clientes):
         return
 
     print("\n################ Extrato ################\n")
-    transacoes = conta.historico.transacoes
-
     extrato = ""
-    if not transacoes:
-        extrato = "Não foram realizadas movimentações."
+    tem_transacao = False
+    for transacao in conta.historico.gerar_relatorio():
+        tem_transacao = True
+        extrato += f"\n{transacao['tipo']}:\tR$ {transacao['valor']:.2f}"
 
-    else:
-        for transacoes in transacoes:
-            extrato += f"\n{transacoes['tipo']}:\tR$ {transacoes['valor']:.2f}"
+    if not tem_transacao:
+        extrato = "Não foram realizadas movimentações."
 
     print(extrato)
     print("-" * 41)
@@ -290,6 +341,7 @@ def exibir_extrato(clientes):
     print("#########################################")
 
 
+@log_transacao
 def criar_clientes(clientes):
     cpf = input("Informe o CPF (somente números): ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -297,6 +349,7 @@ def criar_clientes(clientes):
     if cliente:
         print("\n-- Já existe cadastro de cliente com esse número de CPF! --")
         return
+
     nome = input("Informe o nome completo: ")
     data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
     endereco = input(
@@ -310,6 +363,7 @@ def criar_clientes(clientes):
     print("\n-- Cliente cadastrado com sucesso! --")
 
 
+@log_transacao
 def criar_conta(numero_conta, clientes, contas):
     cpf = input("Informe o CPF do cliente: ")
     cliente = filtrar_cliente(cpf, clientes)
@@ -326,7 +380,7 @@ def criar_conta(numero_conta, clientes, contas):
 
 
 def listar_contas(contas):
-    for conta in contas:
+    for conta in ContasIterador(contas):
         print("=" * 50)
         print(str(conta))
 
