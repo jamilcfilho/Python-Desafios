@@ -1,0 +1,13 @@
+[16-07-2024 04:35:56] | Função 'criar_clientes' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>],) e {}.Retornou None
+[16-07-2024 04:37:33] | Função 'criar_clientes' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:37:45] | Função 'criar_conta' executada com argumentos (1, [<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>], [<ContaCorrente: ('0001', '1', 'Jamil Filho')>]) e {}.Retornou None
+[16-07-2024 04:37:56] | Função 'criar_conta' executada com argumentos (2, [<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>], [<ContaCorrente: ('0001', '1', 'Jamil Filho')>, <ContaCorrente: ('0001', '2', 'Stefani Santos')>]) e {}.Retornou None
+[16-07-2024 04:38:24] | Função 'depositar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:38:34] | Função 'sacar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:38:44] | Função 'depositar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:39:05] | Função 'depositar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:39:15] | Função 'sacar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:39:35] | Função 'exibir_extrato' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>, <PessoaFisica: ('Stefani Santos', '456789')>],) e {}.Retornou None
+[16-07-2024 04:42:48] | Função 'depositar' executada com argumentos ([],) e {}.Retornou None
+[16-07-2024 04:43:18] | Função 'criar_clientes' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>],) e {}.Retornou None
+[16-07-2024 04:43:29] | Função 'depositar' executada com argumentos ([<PessoaFisica: ('Jamil Filho', '123456')>],) e {}.Retornou None
